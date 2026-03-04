@@ -1,0 +1,11 @@
+.intro__name-button {
+  display: flex;
+  column-gap: 18px;
+  align-items: center;
+}
+
+@media screen and (max-width: 320px) {
+  .intro__name-button {
+    column-gap: 10px;
+  }
+}

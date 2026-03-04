@@ -1,0 +1,22 @@
+.page {
+  font-family: "inter", sans-serif;
+  background-color: #000;
+  color: #fff;
+  max-width: 1280px;
+  margin: 0 auto;
+
+  button {
+    opacity: 1;
+    transition: opacity ease-in 2s;
+  }
+
+  button:hover {
+    opacity: 0.7;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .page {
+    max-width: 320px;
+  }
+}

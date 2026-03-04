@@ -1,0 +1,10 @@
+.intro__image {
+  border-radius: 50%;
+}
+
+@media screen and (max-width: 320px) {
+  .intro__image {
+    width: 120px;
+    height: 120px;
+  }
+}

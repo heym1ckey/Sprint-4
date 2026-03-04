@@ -1,0 +1,18 @@
+.profile__button {
+  border: 2px solid #fff;
+  background: none;
+  cursor: pointer;
+  width: 150px;
+  height: 50px;
+  background-image: url(/images/Profile/Vector-profile-button.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@media screen and (max-width: 320px) {
+  .profile__button {
+    width: 282px;
+    height: 50px;
+    background-image: url(/images/Profile/Vector-profile-button320.svg);
+  }
+}
