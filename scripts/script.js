@@ -1,6 +1,7 @@
 // Активный
 const container = document.querySelector(".page");
 const popup = container.querySelector(".popup");
+const popupAdd = container.querySelector(".popup-add");
 const elementsContainer = container.querySelector(".elements");
 const introName = container.querySelector(".intro__name");
 const introActivity = container.querySelector(".intro__activity");
@@ -82,3 +83,19 @@ for (let i = 0; i < initialCards.length; i++) {
 
   elementsContainer.append(rectangleElement);
 }
+
+const introButtonAdd = container.querySelector(".profile__button");
+
+function popupAddActive() {
+  popupAdd.classList.add("popup-add_active");
+}
+
+introButtonAdd.addEventListener("click", popupAddActive);
+
+const closeAddButton = popupAdd.querySelector(".popup-add__form-button");
+
+function closePopupAdd() {
+  popupAdd.classList.remove("popup-add_active");
+}
+
+closeAddButton.addEventListener("click", closePopupAdd);

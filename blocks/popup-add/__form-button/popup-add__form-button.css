@@ -1,0 +1,19 @@
+.popup-add__form-button {
+  width: 358px;
+  height: 50px;
+  cursor: pointer;
+  background-color: #000;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 400;
+  margin-bottom: 37px;
+}
+
+@media screen and (max-width: 320px) {
+  .popup-add__form-button {
+    width: 238px;
+    height: 46px;
+    margin-bottom: 25px;
+    font-size: 14px;
+  }
+}
