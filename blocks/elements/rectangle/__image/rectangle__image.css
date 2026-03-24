@@ -1,2 +1,5 @@
 .rectangle__image {
+  border-radius: 5%;
+  width: 282px;
+  height: 282px;
 }

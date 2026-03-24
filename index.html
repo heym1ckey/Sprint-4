@@ -11,11 +11,7 @@
     <section class="popup">
       <form class="popup__container" action="">
         <button class="popup__button">
-          <img
-            class="popup__close-icon"
-            src="/images/popup/Close Icon.svg"
-            alt=""
-          />
+          <img class="popup__close-icon" src="/images/popup/Close Icon.svg" alt="" />
         </button>
         <h2 class="popup__header">Редактировать профиль</h2>
         <div class="popup__inputs">
@@ -34,11 +30,7 @@
     </header>
     <section class="profile">
       <div class="profile__intro">
-        <img
-          class="intro__image"
-          src="/images/Profile/Avatar-image.svg"
-          alt=""
-        />
+        <img class="intro__image" src="/images/Profile/Avatar-image.svg" alt="" />
         <div class="intro__text">
           <div class="intro__name-button">
             <h2 class="intro__name">Жак-Ив Кусто</h2>
@@ -50,84 +42,17 @@
       <button class="profile__button"></button>
     </section>
     <section class="elements">
-      <div class="rectangle">
-        <img
-          src="/images/Elements/Карачаевск.svg"
-          alt=""
-          class="rectangle__image"
-        />
-        <div class="rectangle__text-part">
-          <h2 class="rectangle__header">Карачаевск</h2>
-          <button class="rectangle__button">
-            <img src="/images/Elements/button__image.svg" alt="" />
-          </button>
+      <template id="rectangle-template">
+        <div class="rectangle">
+          <img alt="" class="rectangle__image" />
+          <div class="rectangle__text-part">
+            <h2 class="rectangle__header"></h2>
+            <button class="rectangle__button">
+              <img class="rectangle__button-image" alt="" />
+            </button>
+          </div>
         </div>
-      </div>
-      <div class="rectangle">
-        <img
-          src="/images/Elements/Гора Эльбрус.svg"
-          alt=""
-          class="rectangle__image"
-        />
-        <div class="rectangle__text-part">
-          <h2 class="rectangle__header">Гора Эльбрус</h2>
-          <button class="rectangle__button">
-            <img src="/images/Elements/button__image.svg" alt="" />
-          </button>
-        </div>
-      </div>
-      <div class="rectangle">
-        <img
-          src="/images/Elements/Домбай.svg"
-          alt=""
-          class="rectangle__image"
-        />
-        <div class="rectangle__text-part">
-          <h2 class="rectangle__header">Домбай</h2>
-          <button class="rectangle__button">
-            <img src="/images/Elements/button__image.svg" alt="" />
-          </button>
-        </div>
-      </div>
-      <div class="rectangle">
-        <img
-          src="/images/Elements/Гора Эльбрус.svg"
-          alt=""
-          class="rectangle__image"
-        />
-        <div class="rectangle__text-part">
-          <h2 class="rectangle__header">Гора Эльбрус</h2>
-          <button class="rectangle__button">
-            <img src="/images/Elements/button__image.svg" alt="" />
-          </button>
-        </div>
-      </div>
-      <div class="rectangle">
-        <img
-          src="/images/Elements/Домбай.svg"
-          alt=""
-          class="rectangle__image"
-        />
-        <div class="rectangle__text-part">
-          <h2 class="rectangle__header">Домбай</h2>
-          <button class="rectangle__button">
-            <img src="/images/Elements/button__image.svg" alt="" />
-          </button>
-        </div>
-      </div>
-      <div class="rectangle">
-        <img
-          src="/images/Elements/Карачаевск.svg"
-          alt=""
-          class="rectangle__image"
-        />
-        <div class="rectangle__text-part">
-          <h2 class="rectangle__header">Карачаево-Черкессия</h2>
-          <button class="rectangle__button">
-            <img src="/images/Elements/button__image.svg" alt="" />
-          </button>
-        </div>
-      </div>
+      </template>
     </section>
     <section class="footer">
       <p class="footer__copyright">&copy; 2026 Mesto Russia</p>
