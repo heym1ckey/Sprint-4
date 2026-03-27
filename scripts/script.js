@@ -11,39 +11,35 @@ const popupInputActivity = container.querySelector(".popup__input-activity");
 
 const introButton = container.querySelector(".intro__button");
 const formElement = container.querySelector(".popup__container");
-
-function popupActive() {
-  popup.classList.add("popup_active");
-
-  popupInputName.value = introName.textContent;
-  popupInputActivity.value = introActivity.textContent;
-}
-
-introButton.addEventListener("click", popupActive);
-
-// Закрытый
-const closeButton = popup.querySelector(".popup__form-button");
-
-function closePopup() {
-  popup.classList.remove("popup_active");
-}
-
-closeButton.addEventListener("click", closePopup);
-
-//Сохраним изменения
-
+const formAddElement = container.querySelector(".popup-add__container");
+const closeButton = popup.querySelector(".popup__button");
 const saveButton = container.querySelector(".popup__form-button");
 
-function handleFormSubmit(evt) {
+function openPopup(item) {
+  item.classList.add("popup_active");
+}
+
+function closePopup(item) {
+  item.classList.remove("popup_active");
+}
+
+introButton.addEventListener("click", function () {
+  popupInputName.value = introName.textContent;
+  popupInputActivity.value = introActivity.textContent;
+
+  openPopup(popup);
+});
+
+formElement.addEventListener("submit", function (evt) {
   evt.preventDefault();
 
   introName.textContent = popupInputName.value;
   introActivity.textContent = popupInputActivity.value;
 
-  closePopup();
-}
+  closePopup(popup);
+});
 
-formElement.addEventListener("submit", handleFormSubmit);
+closeButton.addEventListener("click", () => closePopup(popup));
 
 const initialCards = [
   {
@@ -74,28 +70,41 @@ const initialCards = [
 
 const rectangleTemplate = container.querySelector("#rectangle-template").content;
 
-for (let i = 0; i < initialCards.length; i++) {
-  const rectangleElement = rectangleTemplate.querySelector(".rectangle").cloneNode(true);
+function createCard(item) {
+  const card = rectangleTemplate.querySelector(".rectangle").cloneNode(true);
 
-  rectangleElement.querySelector(".rectangle__image").src = initialCards[i].link;
-  rectangleElement.querySelector(".rectangle__header").textContent = initialCards[i].name;
-  rectangleElement.querySelector(".rectangle__button-image").src = "/images/Elements/button__image.svg";
+  card.querySelector(".rectangle__image").src = item.link;
+  card.querySelector(".rectangle__header").textContent = item.name;
 
-  elementsContainer.append(rectangleElement);
+  elementsContainer.append(card);
 }
 
-const introButtonAdd = container.querySelector(".profile__button");
+initialCards.forEach(createCard);
 
-function popupAddActive() {
-  popupAdd.classList.add("popup-add_active");
+function NewCard(evt) {
+  evt.preventDefault();
+
+  const card = rectangleTemplate.querySelector(".rectangle").cloneNode(true);
+  const nameValue = formAddElement.querySelector(".popup-add__input-name").value;
+  const linkValue = formAddElement.querySelector(".popup-add__input-link").value;
+  card.querySelector(".rectangle__image").src = linkValue;
+  card.querySelector(".rectangle__header").textContent = nameValue;
+
+  elementsContainer.prepend(card);
+
+  formAddElement.reset();
+
+  closePopup(popupAdd);
 }
 
-introButtonAdd.addEventListener("click", popupAddActive);
+const profileButton = container.querySelector(".profile__button");
 
-const closeAddButton = popupAdd.querySelector(".popup-add__form-button");
+profileButton.addEventListener("click", () => openPopup(popupAdd));
 
-function closePopupAdd() {
-  popupAdd.classList.remove("popup-add_active");
-}
+const closeAddButton = popupAdd.querySelector(".popup-add__button");
 
-closeAddButton.addEventListener("click", closePopupAdd);
+closeAddButton.addEventListener("click", () => closePopup(popupAdd));
+
+const saveAddButton = container.querySelector(".popup-add__form-button");
+
+formAddElement.addEventListener("submit", NewCard);
