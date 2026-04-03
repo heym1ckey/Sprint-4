@@ -2,6 +2,7 @@
 const container = document.querySelector(".page");
 const popup = container.querySelector(".popup");
 const popupAdd = container.querySelector(".popup-add");
+const popupImage = container.querySelector(".popup-image");
 const elementsContainer = container.querySelector(".elements");
 const introName = container.querySelector(".intro__name");
 const introActivity = container.querySelector(".intro__activity");
@@ -14,6 +15,8 @@ const formElement = container.querySelector(".popup__container");
 const formAddElement = container.querySelector(".popup-add__container");
 const closeButton = popup.querySelector(".popup__button");
 const saveButton = container.querySelector(".popup__form-button");
+const popupPicture = popupImage.querySelector(".popup-image__picture");
+const popupSignature = popupImage.querySelector(".popup-image__signature");
 
 function openPopup(item) {
   item.classList.add("popup_active");
@@ -70,21 +73,33 @@ const initialCards = [
 
 const rectangleTemplate = container.querySelector("#rectangle-template").content;
 
-function handleLike(button) {
-  button.addEventListener("click", function (evt) {
-    evt.target.classList.toggle("rectangle__button_active");
-  });
-}
-
 function createCard(item) {
   const card = rectangleTemplate.querySelector(".rectangle").cloneNode(true);
 
-  card.querySelector(".rectangle__image").src = item.link;
+  const imageActive = card.querySelector(".rectangle__image");
+
+  imageActive.src = item.link;
   card.querySelector(".rectangle__header").textContent = item.name;
+
+  imageActive.addEventListener("click", () => {
+    popupPicture.src = item.link;
+    popupSignature.textContent = item.name;
+
+    openPopup(popupImage);
+  });
 
   const rectangleButton = card.querySelector(".rectangle__button");
 
-  handleLike(rectangleButton);
+  rectangleButton.addEventListener("click", (evt) => {
+    evt.target.classList.toggle("rectangle__button_active");
+  });
+
+  const deleteButton = card.querySelector(".rectangle__delete-button");
+  if (deleteButton) {
+    deleteButton.addEventListener("click", function () {
+      card.remove();
+    });
+  }
 
   return card;
 }
@@ -104,8 +119,6 @@ function newCard(evt) {
 
   elementsContainer.prepend(card);
 
-  const rectangleButton = card.querySelector(".rectangle__button");
-
   formAddElement.reset();
 
   closePopup(popupAdd);
@@ -122,3 +135,7 @@ closeAddButton.addEventListener("click", () => closePopup(popupAdd));
 const saveAddButton = container.querySelector(".popup-add__form-button");
 
 formAddElement.addEventListener("submit", newCard);
+
+const closePopupImage = popupImage.querySelector(".popup-image__button");
+
+closePopupImage.addEventListener("click", () => closePopup(popupImage));

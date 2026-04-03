@@ -1,0 +1,12 @@
+.rectangle__delete-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 18px;
+  height: 19px;
+  border: none;
+  background: none;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  background-image: url("/images/Elements/trash.svg");
+}
