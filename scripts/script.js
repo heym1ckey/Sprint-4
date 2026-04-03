@@ -70,27 +70,41 @@ const initialCards = [
 
 const rectangleTemplate = container.querySelector("#rectangle-template").content;
 
+function handleLike(button) {
+  button.addEventListener("click", function (evt) {
+    evt.target.classList.toggle("rectangle__button_active");
+  });
+}
+
 function createCard(item) {
   const card = rectangleTemplate.querySelector(".rectangle").cloneNode(true);
 
   card.querySelector(".rectangle__image").src = item.link;
   card.querySelector(".rectangle__header").textContent = item.name;
 
-  elementsContainer.append(card);
+  const rectangleButton = card.querySelector(".rectangle__button");
+
+  handleLike(rectangleButton);
+
+  return card;
 }
 
-initialCards.forEach(createCard);
+initialCards.forEach((item) => {
+  elementsContainer.append(createCard(item));
+});
 
-function NewCard(evt) {
+function newCard(evt) {
   evt.preventDefault();
 
-  const card = rectangleTemplate.querySelector(".rectangle").cloneNode(true);
   const nameValue = formAddElement.querySelector(".popup-add__input-name").value;
   const linkValue = formAddElement.querySelector(".popup-add__input-link").value;
-  card.querySelector(".rectangle__image").src = linkValue;
-  card.querySelector(".rectangle__header").textContent = nameValue;
+
+  const newItem = { name: nameValue, link: linkValue };
+  const card = createCard(newItem);
 
   elementsContainer.prepend(card);
+
+  const rectangleButton = card.querySelector(".rectangle__button");
 
   formAddElement.reset();
 
@@ -107,4 +121,4 @@ closeAddButton.addEventListener("click", () => closePopup(popupAdd));
 
 const saveAddButton = container.querySelector(".popup-add__form-button");
 
-formAddElement.addEventListener("submit", NewCard);
+formAddElement.addEventListener("submit", newCard);

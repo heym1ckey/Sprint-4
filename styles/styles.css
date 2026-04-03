@@ -33,5 +33,6 @@
 @import url(/blocks/elements/rectangle/__header/rectangle__header.css);
 @import url(/blocks/elements/rectangle/__image/rectangle__image.css);
 @import url(/blocks/elements/rectangle/__text-part/rectangle__text-part.css);
+@import url(/blocks/elements/rectangle/__button_active/rectangle__button_active.css);
 @import url(/blocks/footer/footer.css);
 @import url(/blocks/footer/__copyright/footer__copyright.css);
