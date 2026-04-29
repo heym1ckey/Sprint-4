@@ -8,6 +8,15 @@
     <title>Mesto</title>
   </head>
   <body class="page">
+    <section class="popup-image">
+      <div class="popup-image__container">
+        <button type="button" class="popup-image__button">
+          <img class="popup__close-icon" src="/images/popup/Close Icon.svg" alt="" />
+        </button>
+        <img src="" alt="" class="popup-image__picture" />
+        <p class="popup-image__signature"></p>
+      </div>
+    </section>
     <section class="popup">
       <form class="popup__container" action="">
         <button type="button" class="popup__button">
@@ -64,10 +73,9 @@
           <img alt="" class="rectangle__image" />
           <div class="rectangle__text-part">
             <h2 class="rectangle__header"></h2>
-            <button class="rectangle__button">
-              <img class="rectangle__button-image" src="/images/Elements/button__image.svg" alt="" />
-            </button>
+            <button class="rectangle__button"></button>
           </div>
+          <button class="rectangle__delete-button"></button>
         </div>
       </template>
     </section>

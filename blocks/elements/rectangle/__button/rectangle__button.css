@@ -1,6 +1,10 @@
 .rectangle__button {
+  width: 25px;
+  height: 19px;
   border: none;
   background: none;
-  padding: 0;
+  background-position: center;
+  background-repeat: no-repeat;
   cursor: pointer;
+  background-image: url("/images/Elements/button__image.svg");
 }

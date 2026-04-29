@@ -1,0 +1,4 @@
+.rectangle__button_active {
+  opacity: 1;
+  background-image: url(/images/Elements/button__image_acvite.svg);
+}
