@@ -1,3 +1,5 @@
+import { Card } from "./card.js";
+
 const container = document.querySelector(".page");
 
 const popup = container.querySelector(".popup");
@@ -23,7 +25,7 @@ const introButton = container.querySelector(".intro__button");
 const profileButton = container.querySelector(".profile__button");
 
 const elementsContainer = container.querySelector(".elements");
-const rectangleTemplate = container.querySelector("#rectangle-template").content;
+const rectangleTemplate = document.querySelector("#rectangle-template").content;
 
 let initialCards = [
   {
@@ -61,8 +63,21 @@ function renderCards() {
   }));
 
   cardsWithIds.forEach((item) => {
-    elementsContainer.append(createCard(item));
+    const card = new Card(item, rectangleTemplate, handleDeleteCard);
+    const cardElement = card.generateCard();
+
+    cardElement.querySelector(".rectangle__image").addEventListener("click", () => {
+      popupPicture.src = item.link;
+      popupSignature.textContent = item.name;
+      openPopup(popupImage);
+    });
+    elementsContainer.append(cardElement);
   });
+}
+
+function handleDeleteCard(cardId) {
+  initialCards = initialCards.filter((_, index) => index + 1 !== cardId);
+  renderCards();
 }
 
 function openPopup(item) {
@@ -103,36 +118,36 @@ popup.addEventListener("click", closePopupOnOverlayClick);
 popupAdd.addEventListener("click", closePopupOnOverlayClick);
 popupImage.addEventListener("click", closePopupOnOverlayClick);
 
-function createCard(item) {
-  const card = rectangleTemplate.querySelector(".rectangle").cloneNode(true);
+// function createCard(item) {
+//   const card = rectangleTemplate.querySelector(".rectangle").cloneNode(true);
 
-  const cardImage = card.querySelector(".rectangle__image");
-  const cardHeader = card.querySelector(".rectangle__header");
-  const rectangleButton = card.querySelector(".rectangle__button");
+//   const cardImage = card.querySelector(".rectangle__image");
+//   const cardHeader = card.querySelector(".rectangle__header");
+//   const rectangleButton = card.querySelector(".rectangle__button");
 
-  cardImage.src = item.link;
-  cardHeader.textContent = item.name;
+//   cardImage.src = item.link;
+//   cardHeader.textContent = item.name;
 
-  cardImage.addEventListener("click", () => {
-    popupPicture.src = item.link;
-    popupSignature.textContent = item.name;
+//   cardImage.addEventListener("click", () => {
+//     popupPicture.src = item.link;
+//     popupSignature.textContent = item.name;
 
-    openPopup(popupImage);
-  });
+//     openPopup(popupImage);
+//   });
 
-  rectangleButton.addEventListener("click", (evt) => {
-    evt.target.classList.toggle("rectangle__button_active");
-  });
+//   rectangleButton.addEventListener("click", (evt) => {
+//     evt.target.classList.toggle("rectangle__button_active");
+//   });
 
-  const deleteButton = card.querySelector(".rectangle__delete-button");
+//   const deleteButton = card.querySelector(".rectangle__delete-button");
 
-  deleteButton.addEventListener("click", () => {
-    initialCards = initialCards.filter((_, index) => index + 1 !== item.id);
-    renderCards();
-  });
+//   deleteButton.addEventListener("click", () => {
+//     initialCards = initialCards.filter((_, index) => index + 1 !== item.id);
+//     renderCards();
+//   });
 
-  return card;
-}
+//   return card;
+// }
 
 function addNewCard(evt) {
   evt.preventDefault();
@@ -152,6 +167,21 @@ function addNewCard(evt) {
 renderCards();
 formAddElement.addEventListener("submit", addNewCard);
 
+function closePopupEnterClick(evt) {
+  if (evt.key == "Escape") {
+    const activePopup = document.querySelector(".popup_active");
+    if (activePopup) {
+      closePopup(activePopup);
+    }
+  }
+}
+// popup.addEventListener("keydown", (evt) ={
+//   if (evt.key == "Escape") {
+//     closePopup(popup);
+//   }
+// });
+// popupAdd;
+// popupImage;
 document.addEventListener("keydown", (evt) => {
   if (evt.key == "Escape") {
     const activePopups = Array.from(document.querySelectorAll(".popup_active"));
@@ -160,3 +190,5 @@ document.addEventListener("keydown", (evt) => {
     });
   }
 });
+
+renderCards();
