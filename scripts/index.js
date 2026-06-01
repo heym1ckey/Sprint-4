@@ -1,0 +1,120 @@
+import { Card } from "./card.js";
+import { initialCards, validationConfig, validationConfigAdd } from "./constants.js";
+import { FormValidator } from "./FormValidator.js";
+
+const container = document.querySelector(".page");
+
+const popup = container.querySelector(".popup");
+const formElement = container.querySelector(".popup__container");
+const popupInputName = container.querySelector(".popup__input-name");
+const popupInputActivity = container.querySelector(".popup__input-activity");
+const closeButton = popup.querySelector(".popup__button");
+const saveButton = container.querySelector(".popup__form-button");
+
+const popupAdd = container.querySelector(".popup-add");
+const formAddElement = container.querySelector(".popup-add__container");
+const closeAddButton = popupAdd.querySelector(".popup-add__button");
+
+const popupEnlargedImage = container.querySelector(".popup-image");
+const popupSignature = popupEnlargedImage.querySelector(".popup-image__signature");
+const popupPicture = popupEnlargedImage.querySelector(".popup-image__picture");
+const closepopupEnlargedImage = popupEnlargedImage.querySelector(".popup-image__button");
+
+const introName = container.querySelector(".intro__name");
+const introActivity = container.querySelector(".intro__activity");
+const introButton = container.querySelector(".intro__button");
+const profileButton = container.querySelector(".profile__button");
+
+const elementsContainer = container.querySelector(".elements");
+const rectangleTemplate = document.querySelector("#rectangle-template").content;
+
+function handleCardClick(name, link) {
+  popupPicture.src = link;
+  popupSignature.textContent = name;
+  openPopup(popupEnlargedImage);
+}
+
+function createCard(item) {
+  const card = new Card(item, rectangleTemplate, handleCardClick);
+  const cardElement = card.generateCard();
+
+  return cardElement;
+}
+
+function renderCards() {
+  initialCards.forEach((item) => {
+    elementsContainer.append(createCard(item));
+  });
+}
+
+function openPopup(item) {
+  item.classList.add("popup_active");
+}
+
+introButton.addEventListener("click", function () {
+  popupInputName.value = introName.textContent;
+  popupInputActivity.value = introActivity.textContent;
+
+  openPopup(popup);
+});
+profileButton.addEventListener("click", () => openPopup(popupAdd));
+
+function closePopup(item) {
+  item.classList.remove("popup_active");
+}
+
+formElement.addEventListener("submit", function (evt) {
+  evt.preventDefault();
+
+  introName.textContent = popupInputName.value;
+  introActivity.textContent = popupInputActivity.value;
+
+  closePopup(popup);
+});
+closeButton.addEventListener("click", () => closePopup(popup));
+closeAddButton.addEventListener("click", () => closePopup(popupAdd));
+closepopupEnlargedImage.addEventListener("click", () => closePopup(popupEnlargedImage));
+
+function closePopupOnOverlayClick(evt) {
+  if (evt.target === evt.currentTarget) {
+    closePopup(evt.currentTarget);
+  }
+}
+
+popup.addEventListener("click", closePopupOnOverlayClick);
+popupAdd.addEventListener("click", closePopupOnOverlayClick);
+popupEnlargedImage.addEventListener("click", closePopupOnOverlayClick);
+
+function addNewCard(evt) {
+  evt.preventDefault();
+
+  const nameValue = formAddElement.querySelector(".popup-add__input-name").value;
+  const linkValue = formAddElement.querySelector(".popup-add__input-link").value;
+  const newCard = { name: nameValue, link: linkValue };
+
+  elementsContainer.prepend(createCard(newCard));
+
+  formAddElement.reset();
+
+  closePopup(popupAdd);
+}
+
+formAddElement.addEventListener("submit", addNewCard);
+
+function closePopupEscapeClick(evt) {
+  if (evt.key == "Escape") {
+    const activePopup = document.querySelector(".popup_active");
+    if (activePopup) {
+      closePopup(activePopup);
+    }
+  }
+}
+
+document.addEventListener("keydown", closePopupEscapeClick);
+
+renderCards();
+
+const validPopup = new FormValidator(validationConfig, formElement);
+validPopup.enableValidation();
+const validAddPopup = new FormValidator(validationConfigAdd, formAddElement);
+validAddPopup.enableValidation();
