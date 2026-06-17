@@ -39,7 +39,6 @@ export class Card {
     this._element.querySelector(".rectangle__delete-button").addEventListener("click", () => {
       this._deleteCard();
     });
-
     this._element.querySelector(".rectangle__image").addEventListener("click", () => {
       this._handleCardClick(this._name, this._link);
     });

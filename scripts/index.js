@@ -37,7 +37,7 @@ const rectangleTemplate = document.querySelector("#rectangle-template").content;
 const userInfo = new UserInfo(".intro__name", ".intro__activity");
 
 // Модалка для увеличения картинки
-const popupImage = new PopupWithImage({
+window.popupImage = new PopupWithImage({
   popupSelector: ".popup-image",
   imageSelector: ".popup-image__picture",
   captionSelector: ".popup-image__signature",
@@ -47,7 +47,7 @@ const popupImage = new PopupWithImage({
 popupImage.setEventListeners();
 
 function handleCardClick(name, link) {
-  popupImage.open({ name, link });
+  popupImage.open({ link, name });
 }
 
 //Функия для подписей в форме, которые берутся из профиля
@@ -63,7 +63,7 @@ const popupProfile = new PopupWithForm(
     popupSelector: ".popup",
     formSelector: ".popup__container",
     inputSelector: ".popup__input",
-    closeButtonSelector: ".popup__close-button",
+    closeButtonSelector: ".popup__button",
   },
   (data) => {
     userInfo.setUserInfo(data);
@@ -101,7 +101,8 @@ const displayCards = new Section(
   {
     items: initialCards,
     renderer: (item) => {
-      createCard(item);
+      const cardElement = createCard(item);
+      displayCards.addItem(cardElement);
     },
   },
   ".elements",
@@ -121,8 +122,7 @@ validPopup.enableValidation();
 const validAddPopup = new FormValidator(validationConfigAdd, formAddElement);
 validAddPopup.enableValidation();
 
-formAddElement.addEventListener("submit", addNewCard);
-console.log(document.querySelector(".popup"));
+// formAddElement.addEventListener("submit", addNewCard);
 
 // function handleCardClick(name, link) {
 //   popupPicture.src = link;
