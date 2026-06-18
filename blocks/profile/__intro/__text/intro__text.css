@@ -1,4 +1,5 @@
 .intro__text {
+  width: 500px;
   display: flex;
   flex-direction: column;
   row-gap: 16px;
@@ -6,6 +7,7 @@
 
 @media screen and (max-width: 320px) {
   .intro__text {
+    width: 200px;
     row-gap: 14px;
   }
 }

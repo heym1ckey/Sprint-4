@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/styles/normalize.css" />
-    <link rel="stylesheet" href="/styles/styles.css" />
+    <link rel="stylesheet" href="/vendor/normalize.css" />
+    <link rel="stylesheet" href="/pages/styles.css" />
     <title>Mesto</title>
   </head>
   <body class="page">
@@ -25,10 +25,30 @@
         <h2 class="popup__header">Редактировать профиль</h2>
         <div class="popup__inputs">
           <div>
-            <input class="popup__input popup__input-name" type="text" />
+            <input
+              id="input-name"
+              name="name"
+              class="popup__input popup__input-name"
+              type="text"
+              minlength="2"
+              maxlength="40"
+              placeholder="Имя"
+              required
+            />
+            <span class="popup__input-error input-name-error"></span>
           </div>
           <div>
-            <input class="popup__input popup__input-activity" type="text" />
+            <input
+              id="input-activity"
+              name="activity"
+              class="popup__input popup__input-activity"
+              type="text"
+              minlength="2"
+              maxlength="200"
+              placeholder="Род деятельности"
+              required
+            />
+            <span class="popup__input_error input-activity-error"></span>
           </div>
         </div>
         <button class="popup__form-button" type="submit">Сохранить</button>
@@ -42,13 +62,31 @@
         <h2 class="popup-add__header">Новое место</h2>
         <div class="popup-add__inputs">
           <div>
-            <input class="popup-add__input popup-add__input-name" type="text" placeholder="Название" />
+            <input
+              id="input_add-name"
+              name="name"
+              class="popup-add__input popup-add__input-name"
+              type="text"
+              placeholder="Название"
+              minlength="2"
+              maxlength="30"
+              required
+            />
+            <span class="popup__input_error input_add-name-error"></span>
           </div>
           <div>
-            <input class="popup-add__input popup-add__input-link" type="text" placeholder="Ссылка на картинку" />
+            <input
+              id="input_add-link"
+              name="link"
+              class="popup-add__input popup-add__input-link"
+              type="url"
+              placeholder="Ссылка на картинку"
+              required
+            />
+            <span class="popup__input_error input_add-link-error"></span>
           </div>
         </div>
-        <button class="popup-add__form-button" type="submit">Создать</button>
+        <button class="popup-add__form-button popup__button_disabled" type="submit">Создать</button>
       </form>
     </section>
     <header class="header">
@@ -82,6 +120,6 @@
     <section class="footer">
       <p class="footer__copyright">&copy; 2026 Mesto Russia</p>
     </section>
-    <script src="/scripts/script.js"></script>
+    <script type="module" src="/pages/index.js"></script>
   </body>
 </html>
