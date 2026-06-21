@@ -49,24 +49,3 @@ export const validationConfigAdd = {
   inputErrorClass: "popup__input_type_error",
   errorClass: "popup__error_visible",
 };
-
-//Ещё очкую удалять :)
-
-// const popup = container.querySelector(".popup");
-// const popupInputName = container.querySelector(".popup__input-name");
-// const popupInputActivity = container.querySelector(".popup__input-activity");
-// const closeButton = popup.querySelector(".popup__button");
-// const saveButton = container.querySelector(".popup__form-button");
-
-// const popupAdd = container.querySelector(".popup-add");
-// const closeAddButton = popupAdd.querySelector(".popup-add__button");
-
-// const popupEnlargedImage = container.querySelector(".popup-image");
-// const popupSignature = popupEnlargedImage.querySelector(".popup-image__signature");
-// const popupPicture = popupEnlargedImage.querySelector(".popup-image__picture");
-// const closePopupEnlargedImage = popupEnlargedImage.querySelector(".popup-image__button");
-
-// const introName = container.querySelector(".intro__name");
-// const introActivity = container.querySelector(".intro__activity");
-
-// const elementsContainer = container.querySelector(".elements");

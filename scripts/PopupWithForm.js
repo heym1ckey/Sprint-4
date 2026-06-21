@@ -18,6 +18,16 @@ export default class PopupWithForm extends Popup {
 
     return values;
   };
+
+  //Заполнение полей формы
+  setInputValues(data) {
+    this._inputs.forEach((input) => {
+      if (data[input.name] !== undefined) {
+        input.value = data[input.name];
+      }
+    });
+  }
+
   // Отображение данных на странице(данные взял с __getInputValues, колбеком отразил на странице)
   _handleSubmit = (evt) => {
     evt.preventDefault();
