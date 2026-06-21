@@ -1,4 +1,4 @@
-import { Card } from "../scripts/Card.js";
+import { Card } from "../scripts/Card.js"; // для коммита
 import {
   initialCards,
   validationConfig,
