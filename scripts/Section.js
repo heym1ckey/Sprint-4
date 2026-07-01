@@ -1,5 +1,3 @@
-// import { initialCards } from "./Constants";
-
 export default class Section {
   constructor({ items, renderer }, containerSelector) {
     this._renderedItems = items;
@@ -15,11 +13,15 @@ export default class Section {
     this._container.innerHTML = "";
   }
 
+  prependItem(element) {
+    this._container.prepend(element);
+  }
+
   renderItems() {
     this.clear();
 
     this._renderedItems.forEach((item) => {
-      this._renderer(item);
+      this.addItem(this._renderer(item));
     });
   }
 }
