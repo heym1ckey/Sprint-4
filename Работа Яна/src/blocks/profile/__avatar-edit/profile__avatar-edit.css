@@ -1,0 +1,31 @@
+.profile__avatar-edit {
+    width: 120px;
+    height: 120px;
+    grid-row: 1/1;
+    grid-column: 1/1;
+    cursor: pointer;
+    position: absolute;
+    background-image: url(../../../images/Vector.png);
+    background-color: rgba(0, 0, 0, 0.8);
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    border-radius: 40%;
+    box-sizing: border-box;
+    transition: opacity 0.6 linear;
+    z-index: 1;
+    padding: 0;
+    border: none;
+    font: inherit;
+    color: inherit;
+}
+
+.profile__avatar-edit:hover{
+    opacity: 1;
+}
+
+@media screen and (max-width: 690px) {
+    .profile__avatar-edit {
+        margin-left: 80px;
+    }
+}

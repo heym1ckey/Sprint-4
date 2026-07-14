@@ -1,0 +1,8 @@
+.popup__container_image {
+    background-color: transparent;
+    grid-column: 2/3;
+    grid-row: 2/3;
+    width: min-content;
+    margin: 0 auto;
+    cursor: default;
+  }

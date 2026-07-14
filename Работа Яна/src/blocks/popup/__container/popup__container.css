@@ -1,0 +1,17 @@
+.popup__container {
+    background-color: white;
+    width: 430px;
+    border-radius: 10px;
+    grid-column: 2/3;
+    grid-row: 2/3;
+    margin: 0;
+    vertical-align: text-top;
+    cursor: default;
+  }
+  
+  @media screen and (max-width: 490px) {
+    .popup__container {
+      width: 282px;
+    }
+    
+}

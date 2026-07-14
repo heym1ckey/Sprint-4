@@ -1,0 +1,7 @@
+.rectangle__like {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  color: #000;
+}

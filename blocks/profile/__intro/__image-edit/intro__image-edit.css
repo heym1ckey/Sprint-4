@@ -1,0 +1,15 @@
+.intro__image-edit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 0;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: none;
+  cursor: pointer;
+  background-image: url(/images/Profile/EditProfileIcon.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+}

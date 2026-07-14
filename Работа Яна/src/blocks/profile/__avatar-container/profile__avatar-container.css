@@ -1,0 +1,6 @@
+.profile__avatar-container{
+    display: grid;
+    grid-template-columns: 120px;
+    grid-template-rows: 120px;
+    
+}

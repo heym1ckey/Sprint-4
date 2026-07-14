@@ -1,0 +1,13 @@
+.popup-avatar__input {
+  width: 358px;
+  min-height: 27px;
+  border: none;
+  border-bottom: 1px solid #afafaf;
+}
+
+@media screen and (max-width: 320px) {
+  .popup-avatar__input {
+    width: 238px;
+    height: 27px;
+  }
+}

@@ -1,0 +1,16 @@
+.popup-avatar__button {
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  position: absolute;
+  top: -40px;
+  right: -40px;
+}
+
+@media screen and (max-width: 320px) {
+  .popup-avatar__button {
+    right: 0;
+    top: -36px;
+  }
+}
