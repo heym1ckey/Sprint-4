@@ -1,0 +1,9 @@
+.popup-avatar__close-icon {
+}
+
+@media screen and (max-width: 320px) {
+  .popup-avatar__close-icon {
+    width: 20px;
+    height: 20px;
+  }
+}

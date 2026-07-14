@@ -1,0 +1,5 @@
+.popup-avatar__inputs {
+  display: flex;
+  flex-direction: column;
+  row-gap: 30px;
+}

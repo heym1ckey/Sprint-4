@@ -1,0 +1,34 @@
+.intro__avatar-box {
+  position: relative;
+  display: inline-block;
+}
+
+.intro__avatar-box .intro__image-edit {
+  opacity: 0;
+}
+
+.intro__avatar-box:hover .intro__image {
+  opacity: 0.5;
+  transition: opacity 0.1s ease;
+}
+
+.intro__avatar-box:hover .intro__image-edit {
+  opacity: 1;
+  transition: opacity 1s ease;
+}
+
+.intro__image-edit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 0;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: none;
+  cursor: pointer;
+  background-image: url(/images/Profile/EditProfileIcon.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+}
